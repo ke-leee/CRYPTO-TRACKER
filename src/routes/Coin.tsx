@@ -79,7 +79,14 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
-
+const Button = styled(Link)`
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+`;
 interface RouteParams {
   coinId: string;
 }
@@ -169,6 +176,7 @@ const Coin = () => {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
+      <Button to="/">prev</Button>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
@@ -213,7 +221,7 @@ const Coin = () => {
           </Tabs>
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />

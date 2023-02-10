@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 import { fetchCoins } from "../api";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atom";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -50,7 +52,14 @@ const Img = styled.img`
   height: 35px;
   margin-right: 10px;
 `;
-
+const Btn = styled.button`
+  cursor: pointer;
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  left: 20px;
+  margin: 15px;
+`;
 interface ICoin {
   id: string;
   name: string;
@@ -63,11 +72,18 @@ interface ICoin {
 
 const Coins = () => {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
+
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleHandler = () => {
+    setDarkAtom((prev) => !prev);
+  };
+
   return (
     <Container>
       <Helmet>
         <title>코인</title>
       </Helmet>
+      <Btn onClick={toggleHandler}>토글</Btn>
       <Header>
         <Title>코인</Title>
       </Header>
