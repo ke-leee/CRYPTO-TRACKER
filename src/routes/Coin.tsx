@@ -168,6 +168,7 @@ const Coin = () => {
       refetchInterval: 5000,
     }
   );
+  //console.log(tickersData?.quotes.USD.price);
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
@@ -197,7 +198,7 @@ const Coin = () => {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
+              {/* <span>${tickersData?.quotes.USD.price.toFixed(3)}</span> */}
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
