@@ -69,7 +69,7 @@ function Price({ coinId }: PriceProps) {
       refetchInterval: 5000,
     }
   );
-  console.log(data);
+  //   console.log(data);
   const USD = data?.quotes.USD;
   return (
     <div>
